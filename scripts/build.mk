@@ -9,7 +9,7 @@ endif
 WORK_DIR  = $(shell pwd)
 BUILD_DIR = $(WORK_DIR)/build
 
-INC_DIR += $(WORK_DIR)/include $(NEMU_HOME)/lib-include
+INC_DIR += $(WORK_DIR)/include $(NEMU_HOME_DEV)/lib-include
 XINC_DIR = $(INC_DIR) $(WORK_DIR)/resource
 OBJ_DIR  = $(BUILD_DIR)/obj-$(NAME)$(SO)
 BINARY   = $(BUILD_DIR)/$(NAME)$(SO)

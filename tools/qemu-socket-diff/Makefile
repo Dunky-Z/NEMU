@@ -18,7 +18,7 @@ SRCS  = $(shell find src/ -name "*.c" | grep -v "isa")
 SRCS += $(shell find src/isa/$(ISA) -name "*.c")
 
 SHARE = 1
-CFLAGS += -DNEMU_HOME=$(NEMU_HOME) -D_ISA_H_=\"isa/$(ISA).h\"
+CFLAGS += -DNEMU_HOME_DEV=$(NEMU_HOME_DEV) -D_ISA_H_=\"isa/$(ISA).h\"
 
-include $(NEMU_HOME)/scripts/isa.mk
-include $(NEMU_HOME)/scripts/build.mk
+include $(NEMU_HOME_DEV)/scripts/isa.mk
+include $(NEMU_HOME_DEV)/scripts/build.mk

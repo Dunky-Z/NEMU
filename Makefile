@@ -14,12 +14,12 @@
 # See the Mulan PSL v2 for more details.
 #**************************************************************************************/
 
-ifeq ($(wildcard $(NEMU_HOME)/src/nemu-main.c),)
-  $(error NEMU_HOME=$(NEMU_HOME) is not a NEMU repo)
+ifeq ($(wildcard $(NEMU_HOME_DEV)/src/nemu-main.c),)
+  $(error NEMU_HOME_DEV=$(NEMU_HOME_DEV) is not a NEMU repo)
 endif
 
--include $(NEMU_HOME)/include/config/auto.conf
--include $(NEMU_HOME)/include/config/auto.conf.cmd
+-include $(NEMU_HOME_DEV)/include/config/auto.conf
+-include $(NEMU_HOME_DEV)/include/config/auto.conf.cmd
 
 DIRS-y = src/cpu src/monitor src/utils
 DIRS-$(CONFIG_MODE_SYSTEM) += src/memory
@@ -29,11 +29,11 @@ remove_quote = $(patsubst "%",%,$(1))
 ISA    ?= $(if $(CONFIG_ISA),$(call remove_quote,$(CONFIG_ISA)),x86)
 CFLAGS += -D__ISA__=$(ISA)
 # CFLAGS += -g
-INC_DIR += $(NEMU_HOME)/src/isa/$(ISA)/include
+INC_DIR += $(NEMU_HOME_DEV)/src/isa/$(ISA)/include
 DIRS-y += src/isa/$(ISA)
 
 ENGINE ?= $(call remove_quote,$(CONFIG_ENGINE))
-INC_DIR += $(NEMU_HOME)/src/engine/$(ENGINE)
+INC_DIR += $(NEMU_HOME_DEV)/src/engine/$(ENGINE)
 DIRS-y += src/engine/$(ENGINE)
 
 DIRS-$(CONFIG_MODE_USER) += src/user
@@ -124,13 +124,13 @@ else ifdef CONFIG_FPU_HOST
 LDFLAGS += -lm
 endif
 
-include $(NEMU_HOME)/scripts/git.mk
-include $(NEMU_HOME)/scripts/config.mk
-include $(NEMU_HOME)/scripts/isa.mk
-include $(NEMU_HOME)/scripts/build.mk
+include $(NEMU_HOME_DEV)/scripts/git.mk
+include $(NEMU_HOME_DEV)/scripts/config.mk
+include $(NEMU_HOME_DEV)/scripts/isa.mk
+include $(NEMU_HOME_DEV)/scripts/build.mk
 
 ifdef CONFIG_DIFFTEST
-DIFF_REF_PATH = $(NEMU_HOME)/$(call remove_quote,$(CONFIG_DIFFTEST_REF_PATH))
+DIFF_REF_PATH = $(NEMU_HOME_DEV)/$(call remove_quote,$(CONFIG_DIFFTEST_REF_PATH))
 DIFF_REF_SO = $(DIFF_REF_PATH)/build/$(ISA)-$(call remove_quote,$(CONFIG_DIFFTEST_REF_NAME))-so
 MKFLAGS = ISA=$(ISA) SHARE=1 ENGINE=interpreter
 ARGS_DIFF = --diff=$(DIFF_REF_SO)

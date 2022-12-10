@@ -20,8 +20,8 @@
 #define str(x) _str(x)
 
 #define ISA_QEMU_BIN "qemu-system-mipsel"
-#define ISA_QEMU_ARGS "-machine", "mipssim",\
-  "-kernel", str(NEMU_HOME) "/resource/mips-elf/mips.dummy",
+#define ISA_QEMU_ARGS "-machine", "mipssim", \
+                      "-kernel", str(NEMU_HOME_DEV) "/resource/mips-elf/mips.dummy",
 
 union isa_gdb_regs {
   struct {

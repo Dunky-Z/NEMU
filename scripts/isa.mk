@@ -14,7 +14,7 @@
 #**************************************************************************************/
 
 ISA ?= x86
-ISAS = $(shell ls $(NEMU_HOME)/src/isa/)
+ISAS = $(shell ls $(NEMU_HOME_DEV)/src/isa/)
 ifeq ($(filter $(ISAS), $(ISA)), ) # ISA must be valid
 $(error Invalid ISA=$(ISA). Supported: $(ISAS))
 endif
